@@ -15,6 +15,28 @@ if there could be a particularly elegant solution.
 Where solutions require compilation, there *should* be a Makefile so entering the folder and simply typing `make`
 should result in the executable binary artefacts named appropriately.
 
+## Solution Matrix
+| Language                            | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 |
+| ----------------------------------- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| [Haskell](https://haskell.org)      | +  |    | +  | +  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| [Python](https://python.org)        | *  | +  | +  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| [iPython](https://jupyter.org)      | +  |    | +  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| [Awk](https://awklang.org)          |    | *  |    | *+ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| [C++](https://isocpp.org)           |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| C#                                  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| Java                                |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| Scala                               |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| q                                   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| Excel                               | +  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| BBC Basic                           |    |    | +  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| /bin/sh                             |    |    | +  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| R                                   |    |    | +  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| Fortran                             |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| Perl                                |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+
+
+\* = first solution, + = extra solutions
+ 
 ## Contributing
 This code is only here for the sake of posterity so contributions are not expected.
 
