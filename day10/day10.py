@@ -1,38 +1,20 @@
-
-
-
-filename='day10/test2.txt'
+import numpy as np
+filename='day10/input.txt'
 input = open(filename,'r')
 lines = input.readlines()
 input.close()
 
+jolts = [int(i) for i in lines]
+jolts.sort()
+jolts.insert(0,0)
+jolts.append(jolts[-1]+3)
 
-code=[]
-input=[]
-for line in lines:
-        num=int(line.strip())
-        input.append(num)
-input.append(0)
+diffs=''.join(map(str,np.diff(jolts)))
 
-input.sort()
-deltas={}
-diffs=""
-for i,inp in enumerate(input):
-    if i==0:continue  
-    diff=input[i]-input[i-1]
-    diffs+=str(diff)
-    if diff in deltas: deltas[diff]+=1
-    else: deltas[diff]=1
+answer1=diffs.count('1')*diffs.count('3')
 
-counts={}
-answer2=1
-mult=[1,1,2,4,7]
-for line in diffs.split("3"):
-  if len(line) in counts: counts[len(line)]+=1
-  else: counts[len(line)]=1
-  answer2*=mult[len(line)]
-  print(line)
+combos=[1,1,2,4,7]
+runsof1combos = [combos[i.count('1')] for i in diffs.split('3')]
 
-print(counts)
-answer1=deltas[1]*deltas[3]
+answer2=np.product(runsof1combos)
 print(answer1,answer2)
