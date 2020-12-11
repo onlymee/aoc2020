@@ -4,6 +4,7 @@ def iterate(mp):
     adj=[]
     newMp=[]
     occ=0
+    chg=0
     for i,row in enumerate(mp):
         newRow=""
         for j,seat in enumerate(row):
@@ -22,15 +23,17 @@ def iterate(mp):
           if i<len(mp)-1 and j>0 and mp[i+1][j-1]=='#': cnt+=1
           if cnt==0: newSeat='#'
           if cnt>=4: newSeat='L'
+          if newSeat!=seat: chg+=1
           if newSeat=='#': occ+=1
           newRow+=newSeat
         newMp.append(newRow)
-    return (occ,newMp)
+    return (occ,chg,newMp)
 
 def iterate2(mp):
     adj=[]
     newMp=[]
     occ=0
+    chg=0
     for i,row in enumerate(mp):
         newRow=""
         for j,seat in enumerate(row):
@@ -41,10 +44,11 @@ def iterate2(mp):
           cnt=scan(mp,i,j)
           if cnt==0: newSeat='#'
           if cnt>=5: newSeat='L'
+          if newSeat!=seat: chg+=1
           if newSeat=='#': occ+=1
           newRow+=newSeat
         newMp.append(newRow)
-    return (occ,newMp)
+    return (occ,chg,newMp)
 
 
 def onMap(r,c,h,w):
@@ -91,9 +95,9 @@ def getAnswer1(mp):
     occ=-1
     i=0
     while True:
-        (occ,newMp)=iterate(mp)
+        (occ,chg,newMp)=iterate(mp)
         print("Iterate: ",i, occ)
-        if checkEqual(mp,newMp): break
+        if chg==0: break
         mp=newMp
         newMp=[]
         i+=1
@@ -104,9 +108,9 @@ def getAnswer2(mp):
     occ=-1
     i=0
     while True:
-        (occ,newMp)=iterate2(mp)
+        (occ,chg,newMp)=iterate2(mp)
         print("Iterate: ",i, occ)
-        if checkEqual(mp,newMp): break
+        if chg==0: break
         mp=newMp
         newMp=[]
         i+=1
