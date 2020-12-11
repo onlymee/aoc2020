@@ -96,7 +96,7 @@ def getAnswer1(mp):
     i=0
     while True:
         (occ,chg,newMp)=iterate(mp)
-        print("Iterate: ",i, occ)
+#        print("Iterate: ",i, occ)
         if chg==0: break
         mp=newMp
         newMp=[]
@@ -109,7 +109,7 @@ def getAnswer2(mp):
     i=0
     while True:
         (occ,chg,newMp)=iterate2(mp)
-        print("Iterate: ",i, occ)
+#        print("Iterate: ",i, occ)
         if chg==0: break
         mp=newMp
         newMp=[]
@@ -125,7 +125,7 @@ mp=[]
 for line in lines:
     mp.append(line.strip())
 
-printMap(mp)
+#printMap(mp)
 answer1=getAnswer1(mp)
 answer2=getAnswer2(mp)
 
