@@ -25,11 +25,11 @@ readBuses i (b:bs) = case b of
     _   -> ((bi-i) `mod` bi,bi):readBuses (i+1) bs
     where bi = read b :: Integer
 
-modAny :: [(Integer,Integer)] -> Integer -> (Integer,Integer)
-modAny [] _ = (0,0)
-modAny (b:bs) x 
-  |  x `mod` m == 0 = (x, m)
-  |  otherwise        = modAny bs x
+findAnswer1 :: [(Integer,Integer)] -> Integer -> Integer -> Integer
+findAnswer1 [] _ _ = -1
+findAnswer1 (b:bs) st x
+  |  (st+x) `mod` m == 0 = x*m
+  |  otherwise           = findAnswer1 bs st x
     where
         (_,m)=b
 
@@ -42,9 +42,8 @@ main = do
     let lns = lines input
     let part1 = read (head lns) :: Integer
     let buses = readBuses 0 $ splitOn "," (lns !! 1)
-    let earliest = head $ filter (/= (0,0)) $ map (modAny buses) [part1..]
 
-    let answer1 = (\(x,b) -> (x-part1)*b) earliest
+    let answer1 = head $ filter (/= -1) $ map (findAnswer1 buses part1) [0..]
     let answer2 = crt buses
 
     print (answer1, answer2)
