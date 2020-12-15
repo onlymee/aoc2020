@@ -21,19 +21,6 @@ int play(int playTo, int lastspoken, int lastturn) {
 
 int main()
 {
-    spoken = new int[30000000];
-
-    spoken[0]=1;
-    spoken[1]=3;
-    spoken[3]=4;
-    spoken[7]=5;
-    spoken[14]=2;
-    
-    std::cout << play(2020,9,6) << '\n';
-    delete [] spoken;
-
-    spoken = new int[30000000];
-
     spoken[0]=1;
     spoken[1]=3;
     spoken[3]=4;
