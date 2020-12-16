@@ -82,7 +82,7 @@ possibleFields = [validFor(rules,t) for t in vtickets]
 fields=[]
 for i in range(len(tickets[1])):
     options = set(rules.keys())
-    for tp in possibleFields::while
+    for tp in possibleFields:
         options.intersection_update(tp[i])
     fields.append(options)
 
