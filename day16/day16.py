@@ -39,38 +39,44 @@ def validFor(rules,t):
         validList.append(valid)
     return validList
 
+def parseFile(lines):
+    mode="rules"
+    tickets=[]
+    rules={}
+    for line in lines:
+        if mode=="rules":
+            if line=="": 
+                mode="ticket"
+                continue
+            (field, rng)=line.split(": ")
+            rngs = "-".join(rng.split(" or ")).split("-")
+            rules[field]=[int(i) for i in rngs]
+        if mode=="ticket":
+            if line=="your ticket:":
+                continue
+            tickets.append([int(i) for i in line.split(",")])
+            mode="others"
+        if mode=="others":
+            if line=="": 
+                continue
+            if line=="nearby tickets:":
+                continue
+            tickets.append([int(i) for i in line.split(",")])
+    return (rules,tickets)
 
+
+###########################################################################
 filename='day16/input.txt'
 input = open(filename,'r')
 lines = input.read().splitlines()
 input.close()
 
-mode="rules"
-tickets=[]
-rules={}
-for line in lines:
-    if mode=="rules":
-        if line=="": 
-            mode="ticket"
-            continue
-        (field, rng)=line.split(": ")
-        rngs = "-".join(rng.split(" or ")).split("-")
-        rules[field]=[int(i) for i in rngs]
-    if mode=="ticket":
-        if line=="your ticket:":
-            continue
-        tickets.append([int(i) for i in line.split(",")])
-        mode="others"
-    if mode=="others":
-        if line=="": 
-            continue
-        if line=="nearby tickets:":
-            continue
-        tickets.append([int(i) for i in line.split(",")])
+(rules,tickets)=parseFile(lines)
 
+# Answer 1
 answer1=sum([errcount(rules,t) for t in tickets[1:]])
 
-#  Answer 2
+# Answer 2
 vtickets=[t for t in tickets if valid(rules,t)]
 possibleFields = [validFor(rules,t) for t in vtickets]
 fields=[]
