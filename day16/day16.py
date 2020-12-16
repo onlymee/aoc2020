@@ -77,8 +77,7 @@ input.close()
 answer1=sum([errcount(rules,t) for t in tickets[1:]])
 
 # Answer 2
-vtickets=[t for t in tickets if valid(rules,t)]
-possibleFields = [validFor(rules,t) for t in vtickets]
+possibleFields = [validFor(rules,t) for t in tickets if valid(rules,t)]
 fields=[]
 for i in range(len(tickets[1])):
     options = set(rules.keys())
@@ -86,13 +85,14 @@ for i in range(len(tickets[1])):
         options.intersection_update(tp[i])
     fields.append(options)
 
-while (max([len(f) for f in fields])>1):
-    fixed = set([list(f)[0] for f in fields if len(f)==1])
+fixed=set()
+while (len(fixed) < len(fields)):
+    fixed = {next(iter(f)) for f in fields if len(f)==1}
     for f in fields:
         if len(f)==1: continue
         f.difference_update(fixed)
-
 fields=[list(f)[0] for f in fields]
+
 posn = [i for i,f in enumerate(fields) if "departure" in f]
 
 answer2=np.prod([tickets[0][i] for i in posn])
